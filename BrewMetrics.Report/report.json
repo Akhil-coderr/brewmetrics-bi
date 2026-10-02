@@ -1,5 +1,5 @@
 {
-  "config": "{\"version\":\"5.76\",\"themeCollection\":{\"baseTheme\":{\"name\":\"Fluent2-CY26SU08\",\"version\":{\"visual\":\"2.12.0\",\"report\":\"3.4.0\",\"page\":\"2.3.1\"},\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "config": "{\"version\":\"5.76\",\"themeCollection\":{\"baseTheme\":{\"name\":\"Fluent2-CY26SU08\",\"type\":2,\"version\":{\"visual\":\"2.12.0\",\"report\":\"3.4.0\",\"page\":\"2.3.1\"}}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
   "layoutOptimization": 0,
   "resourcePackages": [
     {
@@ -25,7 +25,17 @@
       "filters": "[]",
       "height": 1080.00,
       "name": "aa7b5ef4010ae91b9d70",
-      "visualContainers": [],
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"d83f2c982826791c766b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":16.579160402451716,\"y\":0,\"z\":1,\"width\":580.27061408581,\"height\":298.4248872441309,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Fact_Sales.Total Sales\"},{\"queryRef\":\"Fact_Sales.Previous Month Sales\"},{\"queryRef\":\"Fact_Sales.MoM Growth %\"},{\"queryRef\":\"Dim_Date.date.Variation.Date Hierarchy.Year\"},{\"queryRef\":\"Dim_Date.date.Variation.Date Hierarchy.Month\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fact_Sales\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"Dim_Date\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total Sales\"},\"Name\":\"Fact_Sales.Total Sales\",\"NativeReferenceName\":\"Total Sales\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Previous Month Sales\"},\"Name\":\"Fact_Sales.Previous Month Sales\",\"NativeReferenceName\":\"Previous Month Sales\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"MoM Growth %\"},\"Name\":\"Fact_Sales.MoM Growth %\",\"NativeReferenceName\":\"MoM Growth %\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Name\":\"Variation\",\"Property\":\"date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Year\"},\"Name\":\"Dim_Date.date.Variation.Date Hierarchy.Year\",\"NativeReferenceName\":\"date Year\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Name\":\"Variation\",\"Property\":\"date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Month\"},\"Name\":\"Dim_Date.date.Variation.Date Hierarchy.Month\",\"NativeReferenceName\":\"date Month\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 298.42,
+          "width": 580.27,
+          "x": 16.58,
+          "y": 0.00,
+          "z": 1.00
+        }
+      ],
       "width": 1920.00
     }
   ]
