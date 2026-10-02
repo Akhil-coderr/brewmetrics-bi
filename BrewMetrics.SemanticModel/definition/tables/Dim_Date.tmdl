@@ -1,0 +1,63 @@
+table Dim_Date
+	lineageTag: e54eb91c-f883-4cb6-bbe1-be1a8c89157e
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b2093431-c150-4a4c-8643-8501df2cdb76
+		summarizeBy: none
+		sourceColumn: date
+
+		variation Variation
+			isDefault
+			relationship: 82516f05-60c8-4338-abdc-602e1750f881
+			defaultHierarchy: LocalDateTable_15bb65b5-7119-4756-8a60-fe1b679de82c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 513db83a-a45d-4a89-b79d-6b81290666d3
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: int64
+		formatString: 0
+		lineageTag: a7ffe6a3-5097-4f65-ad0b-7cb1c2bd8d3c
+		summarizeBy: sum
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		dataType: int64
+		formatString: 0
+		lineageTag: 20ced955-7e52-4e91-90da-5bd26ccd175f
+		summarizeBy: sum
+		sourceColumn: Day
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Date = m
+		mode: import
+		source =
+				let
+				    Source = Fact_Sales,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"date"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Inserted Year" = Table.AddColumn(#"Removed Duplicates", "Year", each Date.Year([date]), Int64.Type),
+				    #"Inserted Month" = Table.AddColumn(#"Inserted Year", "Month", each Date.Month([date]), Int64.Type),
+				    #"Inserted Day" = Table.AddColumn(#"Inserted Month", "Day", each Date.Day([date]), Int64.Type)
+				in
+				    #"Inserted Day"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
