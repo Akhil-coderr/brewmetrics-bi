@@ -39,3 +39,30 @@ Examples from testing:
 ### Learning
 The MoM calculation depends on the correct date context. The date column from the date dimension should be used for time-intelligence calculations instead of relying on an aggregated numeric month field.
 
+## 2. Running Total Sales
+
+### Measure
+```dax
+Running Total Sales = 
+CALCULATE(
+    [Total Sales],
+    FILTER(
+        ALL(Dim_Date[date]),
+        Dim_Date[date] <= MAX(Dim_Date[date])
+    )
+)
+```
+
+### Copilot Suggestion
+The running total measure was implemented using DAX with the date dimension. The calculation uses the current date as the upper limit and includes all dates up to that date.
+
+### Correction / Rewrite
+The measure was tested in a Power BI table visual. The running total was checked across the dates to make sure that the sales value accumulated progressively instead of showing only the sales for the current date. 
+
+No major correction was required after testing the measure.
+
+### Result
+The measure successfully produced a cumulative sales value that increased as the date progressed.
+
+### Learning
+A running total can be created by removing the individual date filter and then filtering the date dimension to include all dates up to the current date.
