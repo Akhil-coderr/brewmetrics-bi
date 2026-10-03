@@ -123,3 +123,38 @@ The products were ranked according to their Total Sales, with the highest-sellin
 ### Learning
 The test showed that filter context is important when using RANKX. The generated DAX should always be tested in the actual report because the result can change depending on the filters and fields used in the visual.
 
+
+## 4. Average Sales per Transaction
+
+### Measure
+```dax
+Average Sales per Transaction = 
+DIVIDE(
+    [Total Sales],
+    DISTINCTCOUNT(Fact_Sales[sale_id])
+)
+```
+
+### Copilot Suggestion
+The measure was created to calculate the average sales value for each transaction. 
+
+The calculation uses the existing `[Total Sales]` measure and counts the unique transaction IDs from `Fact_Sales[sale_id]`.
+
+### Correction / Rewrite
+The measure was tested in Power BI using the product item along with Total Sales and Average Sales per Transaction. 
+
+No major correction was required after testing because the measure produced reasonable values for the different products.
+
+### Result
+The measure successfully calculated the average sales per transaction for each product. 
+
+Examples from testing:
+* **Brownie:** 163.62
+* **Cappuccino:** 207.14
+* **Coffee Beans Pack:** 668.95
+* **Cold Brew:** 361.25
+* **Tumbler:** 841.22
+
+### Learning
+The measure shows how much sales revenue is generated on average per transaction. It uses `DISTINCTCOUNT` on the transaction ID so that each transaction is counted once.
+
