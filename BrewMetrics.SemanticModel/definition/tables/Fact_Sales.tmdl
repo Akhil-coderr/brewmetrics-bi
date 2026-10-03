@@ -37,6 +37,18 @@ table Fact_Sales
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Product Rank' =
+			
+			RANKX(
+			    ALL(Dim_Product[item]),
+			    [Total Sales],
+			    ,
+			    DESC,
+			    DENSE
+			)
+		formatString: 0
+		lineageTag: 2d245945-1f88-4339-9fb3-3d6a2a26827b
+
 	column sale_id
 		dataType: int64
 		formatString: 0
