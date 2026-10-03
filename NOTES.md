@@ -66,3 +66,60 @@ The measure successfully produced a cumulative sales value that increased as the
 
 ### Learning
 A running total can be created by removing the individual date filter and then filtering the date dimension to include all dates up to the current date.
+
+## 3. Product Rank using RANKX
+
+### Measure
+```dax
+Product Rank = 
+RANKX(
+    ALL(Dim_Product[item]),
+    [Total Sales],
+    ,
+    DESC,
+    DENSE
+)
+```
+
+### Copilot's First Suggestion
+GitHub Copilot suggested the following approach using ALLSELECTED:
+
+```dax
+Product Rank = 
+RANKX(
+    ALLSELECTED(Dim_Product[item]),
+    [Total Sales],
+    ,
+    DESC,
+    DENSE
+)
+```
+
+Copilot also explained that this would rank products according to their Total Sales, with the highest sales receiving Rank 1.
+
+### Correction
+The ALLSELECTED version was tested in the Power BI table visual. 
+
+The result showed Rank 1 for every product in the tested visual, so the measure was not producing the expected ranking. 
+
+The measure was therefore rewritten using ALL:
+
+```dax
+Product Rank = 
+RANKX(
+    ALL(Dim_Product[item]),
+    [Total Sales],
+    ,
+    DESC,
+    DENSE
+)
+```
+
+### Result
+After replacing ALLSELECTED with ALL, the measure produced different ranking values for different products. 
+
+The products were ranked according to their Total Sales, with the highest-selling product receiving Rank 1.
+
+### Learning
+The test showed that filter context is important when using RANKX. The generated DAX should always be tested in the actual report because the result can change depending on the filters and fields used in the visual.
+
